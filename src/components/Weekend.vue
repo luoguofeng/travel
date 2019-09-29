@@ -2,7 +2,7 @@
   <div>
     <div class="recommend-title">周末去哪</div>
     <ul>
-      <li class="item border-bottom" v-for="(item, index) in contentList" :key="index">
+      <li class="item border-bottom" v-for="(item, index) in weekend" :key="index">
         <div class="item-img-wrapper">
           <img class="item-img" :src="item.imgUrl" alt />
         </div>
@@ -18,21 +18,9 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data() {
-    return {
-      contentList: [] //详情列表
-    }
-  },
-  created() {
-    this.getList();
-  },
-  methods: {
-    getList() {
-      this.$axios.get('/static/json/weekend.json').then(data => {
-        this.contentList = data.data
-      })
-    }
-  },
+  props: {
+    weekend: Array
+  }
 }
 </script>
 
@@ -47,7 +35,7 @@ export default {
 .item-img-wrapper {
   overflow: hidden;
   height: 0;
-  padding-bottom: 33.9%;
+  padding-bottom: 37.09%;
   .item-img {
     width: 100%;
   }

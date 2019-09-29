@@ -7,10 +7,17 @@ const path = require('path')
 module.exports = {
   dev: {
 
-    // Paths
+    // Paths webpack-dev-serve(当以/api访问时,自动访问static下的json文件夹)
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {
+        target:'http://localhost:8080',
+        pathRewrite:{
+          '^/api':'static/json'
+        }
+      }
+    },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined

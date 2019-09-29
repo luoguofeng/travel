@@ -2,7 +2,7 @@
   <div>
     <div class="recommend-title">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="(item, index) in contentList" :key="index">
+      <li class="item border-bottom" v-for="(item, index) in listList" :key="index">
         <img class="item-img" :src="item.imgUrl" alt />
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -17,21 +17,9 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data() {
-    return {
-      contentList: [] //详情列表
-    }
-  },
-  created() {
-    this.getList();
-  },
-  methods: {
-    getList() {
-      this.$axios.get('/static/json/list.json').then(data => {
-        this.contentList = data.data
-      })
-    }
-  },
+  props: {
+    listList:Array
+  }
 }
 </script>
 

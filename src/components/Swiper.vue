@@ -1,7 +1,7 @@
 <template>
   <div class="warpper">
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="(item, index) in swiperList" :key="index">
+    <swiper :options="swiperOption" v-if="showSwiper">
+      <swiper-slide v-for="(item, index) in bannerList" :key="index">
         <img :src="item.imgUrl" class="swiper-img" />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
@@ -17,21 +17,18 @@ export default {
       swiperOption: {
         pagination: ".swiper-pagination",
         loop: true,
-        autoplay:3000
+        autoplay: 3000
       }, //轮播图配置
-      swiperList: [] //轮播图片地址
     };
   },
-  created() {
-    this.getImg();
+  props: {
+    bannerList: Array
   },
-  methods: {
-    getImg() {
-      this.$axios.get("/static/json/banner.json").then(backData => {
-        this.swiperList = backData.data;
-      });
+  computed: {
+    showSwiper() {
+      return this.bannerList.length;//当传递过来的是空数组的时候,不创建swiper
     }
-  }
+  },
 };
 </script>
 <style>
