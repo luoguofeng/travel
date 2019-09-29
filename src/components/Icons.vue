@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper data-swiper-autoplay="">
       <swiper-slide v-for="(page, index) in pages" :key="index">
         <div class="icon" v-for="(item, index) in page" :key="index">
           <div class="icon-img">
@@ -18,7 +18,7 @@ export default {
   name: "HomeIcons",
   data() {
     return {
-      iconList: [] ,//轮播图片地址
+      iconList: [],//轮播图片地址
     };
   },
   created() {
@@ -27,20 +27,20 @@ export default {
   methods: {
     //获取图标数据的方法
     getIcons() {
-      this.$axios.get("/static/json/icons.json").then(data => {
+      this.$axios.get('/static/json/icons.json').then(data => {
         this.iconList = data.data;
       });
     }
   },
   computed: {
     pages() {
-      const pages = [];
+      const pages = []
       this.iconList.forEach((item, index) => {
-        const page = Math.floor(index / 8);
+        const page = Math.floor(index / 8)
         if (!pages[page]) {
-          pages[page] = [];
+          pages[page] = []
         }
-        pages[page].push(item);
+        pages[page].push(item)
       });
       return pages;
     }
@@ -58,6 +58,7 @@ export default {
   }
 }
 .icons {
+  margin-top: 0.1rem;
   .icon {
     position: relative;
     overflow: hidden;
