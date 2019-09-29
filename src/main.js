@@ -15,8 +15,6 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 // 整合axios 
 import axios from 'axios'
-// 设置基地址
-axios.defaults.baseURL = 'https://autumnfish.cn';
 // 把axios设置给Vue的原型
 Vue.prototype.$axios = axios 
 
