@@ -7,18 +7,20 @@
       <span class="iconfont">&#xe632;</span>
       输入城市/景点/游玩主题
     </div>
-    <div class="header-right">
-      {{city}}
-      <span class="iconfont arrow-icon">&#xe64a;</span>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        {{city}}
+        <span class="iconfont arrow-icon">&#xe64a;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
   name: "Home",
-  props:{
-    city:String
+  props: {
+    city: String
   }
 };
 </script>
@@ -26,7 +28,7 @@ export default {
 <style lang="less" scoped>
 @import url("~styles/varibles.less");
 .header {
-  line-height: 0.86rem;
+  line-height: @headerHeight;
   display: flex;
   background: @bgColor;
   color: #fff;
@@ -53,6 +55,7 @@ export default {
     width: 1.24rem;
     float: right;
     text-align: center;
+    color: #fff;
     .arrow-icon {
       margin-left: -0.04rem;
       font-size: 0.24rem;
