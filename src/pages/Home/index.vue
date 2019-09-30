@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-header :city="city"></home-header>
+    <home-header></home-header>
     <home-swiper :bannerList="bannerList"></home-swiper>
     <home-icons :iconList="iconList"></home-icons>
     <home-recommend :listList="listList"></home-recommend>
@@ -19,7 +19,6 @@ export default {
   name: "Home",
   data() {
     return {
-      city: '', // 城市
       bannerList: [], // 轮播组件数据
       iconList: [], // 图标组件数据
       listList: [], // 热门推荐组件数据
@@ -42,7 +41,6 @@ export default {
         res = res.data
         if (res.ret && res.data) {
           const data = res.data
-          this.city = data.city
           this.bannerList = data.bannerList
           this.iconList = data.iconList
           this.listList = data.listList
